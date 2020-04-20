@@ -1,16 +1,71 @@
 import React from 'react';
-import Link from 'next/link';
+import Header from './Header'
+import { Global, css } from '@emotion/core';
+import Head from 'next/head';
 
 //<> </> es la forma simplificada de utilizar Fragment sin importarlo
 const Layout = ( props ) => {
     return (  
         <>
-            <h1>Header</h1>
+            <Global
+                styles={css`
+                    :root {
+                        --gris: #3d3d3d;
+                        --gris2: #6F6F6F;
+                        --naranja: #DA552F;
+                    }
 
-            <nav>
-                <Link href='/'>Inicio</Link>
-                <Link href='/nosotros'>Nosotros</Link>
-            </nav>
+                    htlm {
+                        font-size: 62.5%;
+                        box-sizing: border-box;
+                    }
+                    *, *:before, *:after{
+                        box-sizing: inherit;
+                    }
+
+                    body {
+                        font-size: 1.6rem; /* 16 Pixels */
+                        line-height: 1.5;
+                        font-family: 'PT Sans', sans-serif;
+                    }
+
+                    h1, h2, h3 {
+                        margin: 0 0 2rem 0;
+                        line-height: 1.5;
+                    }
+                    h1, h2 {
+                        font-family: 'Roboto Slab', serif;
+                        font-weight: 700;
+                    }
+                    h3 {
+                        font-family: 'PT Sans', sans-serif;
+                    }
+
+                    ul {
+                        list-style: none;
+                        margin: 0;                        
+                        padding: 0;
+                    }
+
+                    a {
+                        text-decoration: none;
+                    }
+                `}
+                
+            />
+
+            <Head>
+                <html lang='es' />
+                <title>Product Hunt Firebase y Next.js</title>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" 
+                integrity="sha256-/O+WvT2Eeb1RIU6iMItEhi5xlHTCLHg2HgLmVGFWyW8=" 
+                crossorigin="anonymous" />
+                <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&|
+                Roboto+Slab:wght@400;700&display=swap" rel="stylesheet"/>
+                <link href="/static/css/app.css" rel="stylesheet"/>
+            </Head>
+
+            <Header />
 
             <main>
                 {props.children}
