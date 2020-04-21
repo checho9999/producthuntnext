@@ -4,6 +4,7 @@ import { Global, css } from '@emotion/core';
 import Head from 'next/head';
 
 //<> </> es la forma simplificada de utilizar Fragment sin importarlo
+//Los -- dentro del :root son custom properties
 const Layout = ( props ) => {
     return (  
         <>
@@ -12,19 +13,20 @@ const Layout = ( props ) => {
                     :root {
                         --gris: #3d3d3d;
                         --gris2: #6F6F6F;
+                        --gris3: #e1e1e1;
                         --naranja: #DA552F;
                     }
 
-                    htlm {
+                    html {
                         font-size: 62.5%;
                         box-sizing: border-box;
                     }
-                    *, *:before, *:after{
+                    *, *:before, *:after {
                         box-sizing: inherit;
                     }
 
                     body {
-                        font-size: 1.6rem; /* 16 Pixels */
+                        font-size: 1.6rem; 
                         line-height: 1.5;
                         font-family: 'PT Sans', sans-serif;
                     }
@@ -33,20 +35,22 @@ const Layout = ( props ) => {
                         margin: 0 0 2rem 0;
                         line-height: 1.5;
                     }
+
                     h1, h2 {
                         font-family: 'Roboto Slab', serif;
                         font-weight: 700;
                     }
+
                     h3 {
                         font-family: 'PT Sans', sans-serif;
                     }
 
                     ul {
                         list-style: none;
-                        margin: 0;                        
-                        padding: 0;
+                        margin: 0;
+                        padding:0;
                     }
-
+                    
                     a {
                         text-decoration: none;
                     }
