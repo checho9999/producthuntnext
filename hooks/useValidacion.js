@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 //En el parametro validar estan las reglas de validacion
 //Si es CrearCuenta => stateInicial=STATE_INICIAL, validar=validarCrearCuenta, fn=crearCuenta
+//Si es Login => stateInicial=STATE_INICIAL, validar=validarIniciarSesion, fn=iniciarSesion
 const useValidacion = (stateInicial, validar, fn) => {
 
     //actualizacion del state para guardar los datos ingresados por el usuario en el input

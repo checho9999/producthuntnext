@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import Buscar from '../ui/Buscar';
 import Navegacion from '../layout/Navegacion';
 import Boton from '../ui/Boton';
+import { FirebaseContext } from '../../firebase';
 
 //Para 1 o 2 lineas aplicamos css y para mas styled components
 //El Next no es posible utilizar Link integrado a styled components, si en Gatsby
@@ -29,8 +30,8 @@ const Logo = styled.a`
 `;
 
 const Header = () => {
-
-    const usuario = false;
+    //State del usuario y de firebase
+    const { usuario, firebase } = useContext(FirebaseContext);
 
     return (  
         <header
@@ -68,10 +69,11 @@ const Header = () => {
                                 css={css`
                                     margin-right: 2rem;
                                 `}  
-                            >Hola: Checho</p>
+                            >Hola: {usuario.displayName}</p>
 
                             <Boton
                                 bgColor='true'
+                                onClick={() => firebase.cerrarSesion() }
                             >Cerrar Sesión</Boton>
                         </>                        
                     ) : (                         
