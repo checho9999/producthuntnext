@@ -13,7 +13,9 @@ class Firebase {
         }
         //Para habilitar la autenticacion
         this.auth = app.auth();
+        //Obtenemos acceso a la base de datos de firebase
         this.db = app.firestore();
+        //Habitamos el storage en la base de datos para subir archivos
         this.storage = app.storage();
     }
 
