@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 //Para cambiar el idioma a español
 import { es } from 'date-fns/locale';
+import Link from 'next/link';
 
 const Producto = styled.li`
     padding: 4rem;
@@ -99,6 +100,9 @@ const DetallesProducto = ( { producto } ) => {
 
                 <div>
                     <Titulo>{nombre}</Titulo>
+                    <Link href="/productos/[id]" as={`/productos/${id}`}>
+                        <Titulo>{nombre}</Titulo>
+                    </Link>                    
                     <TextoDescripcion>{descripcion}</TextoDescripcion>
                     <Comentarios>
                         <div>
