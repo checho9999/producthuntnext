@@ -164,6 +164,38 @@ const Producto = () => {
         guardarConsultarDB(true);
     }
 
+    //Verificamos que el usuario no solo este autenticado, sino tambien que sea el creador del producto que visita
+    const puedeBorrar = () => {
+        //Si el usuario no esta autenticado
+        if (!usuario) return false;
+
+        //Si el usuario esta autenticado, nos fijamos si es el creador del producto
+        if (creador.id === usuario.uid) {
+            return true
+        }
+    }
+
+    //Eliminamos un producto de la base de datos
+    const eliminarProducto = async () => {
+        //Si el usuario no esta autenticado, lo redirigimos hacia el login
+        if (!usuario) {
+            return router.push('/login')
+        }
+        //Si el usuario esta autenticado, pero no es creador del producto lo redirigimos hacia el login
+        if (creador.id !== usuario.uid) {
+            return router.push('/')
+        }
+
+        try {
+            //Accedemos a la base de datos para borrar el producto
+            await firebase.db.collection('productos').doc(id).delete();
+            //Redireccionamos al usuario hacia la pagina principal
+            router.push('/')
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return ( 
         <Layout>
             <>
@@ -258,7 +290,12 @@ const Producto = () => {
                                     ) }
                                 </div>                            
                             </aside>
-                        </ContenedorProducto>
+                        </ContenedorProducto>                        
+                        { puedeBorrar() && 
+                            <Boton
+                                onClick={eliminarProducto}
+                            >Eliminar Producto</Boton>
+                        }
                     </div>
                 ) }
 

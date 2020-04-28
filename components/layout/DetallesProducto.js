@@ -99,7 +99,6 @@ const DetallesProducto = ( { producto } ) => {
                 </div>
 
                 <div>
-                    <Titulo>{nombre}</Titulo>
                     <Link href="/productos/[id]" as={`/productos/${id}`}>
                         <Titulo>{nombre}</Titulo>
                     </Link>                    
