@@ -11,9 +11,9 @@ const Populares = () => {
   return (
     <div>
       <Layout>
-        <div className="listado-productos">
-            <div className="contenedor">
-              <ul className="bg-white">
+        <div className='listado-productos'>
+            <div className='contenedor'>
+              <ul className='bg-white'>
                   {productos.map(producto => (
                       <DetallesProducto
                           key={producto.id}
